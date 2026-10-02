@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        let frutas = ["Abacaxi", "Banana", "Carambola", "Durião"];
+
+        frutas.push("Embaúba")
+
+        frutas.forEach(fru => {
+            console.log(fru)
+        })
+
+        let Jason = {
+            "turma": "",
+            "ano": 1999
+        }
+
+        let itensInteresse = {
+            "numero_item" : 3,
+            "itens" : ['panela 1', 'panela 2', 'panela 3']
+        }
+        let itemInteresseString = JSON.stringify(itensInteresse)
+
+        localStorage.setItem('itens_interesse', itemInteresseString)
+
+
+
+
+        // localStorage.setItem("Itens_interesse", "panela de pressão tramontina")
+
+        // for (let fruta of frutas) {
+        //     console.log(fruta)
+        // }
+
+        // console.log(frutas)
+
+    </script>
+</body>
+
+</html>
