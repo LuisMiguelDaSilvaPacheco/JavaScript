@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ================================ 
+                     TEMA CLARO 
+           ================================ */
+        
+        body {
+            font-family: sans-serif;
+            transition: 0.25s; 
+        }
+
+        body.claro{
+            transition: 0.25s;
+            background-color: white;
+            color: black;
+        }
+        
+        /* ================================ 
+                     TEMA ESCURO
+           ================================ */
+
+        body.escuro{
+            transition: 0.25s;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- FORMULÁRIO -->
+    <form id="formPreferencias">
+        <div class="grupo">
+            <label for="">
+                tema:
+            </label>
+            <select id="tema">
+                <option value="claro">
+                    Claro
+                </option>
+                <option value="escuro">
+                    Escuro
+                </option>
+            </select>
+        </div>
+        <div class="grupo">
+            <button id="btnSalvar">
+                Salvar preferências
+            </button>
+        </div>
+    </form>
+
+    <script>
+
+        /* ================================ 
+                    ELEMENTOS HTML
+           ================================ */
+
+        const body = document.querySelector('body')
+        const form = document.querySelector('#formPreferencias')
+        const tema = document.querySelector('#tema')
+
+        /* ================================ 
+                CARREGAR LOCAL STORAGE
+           ================================ */
+
+        const temaSalvo = localStorage.getItem('tema')
+
+        if (tema) {
+            aplicarTema(temaSalvo)
+        }
+
+        tema.addEventListener('change', ()=>{
+            const temaSelecionado = tema.value
+
+            aplicarTema(temaSelecionado)
+        })
+
+        /* ================================ 
+                  SALVAR PREFERÊNCIAS
+           ================================ */
+
+        form.addEventListener('submit', (evento) => {
+            evento.preventDefault()
+
+            const temaSelecionado = tema.value
+
+            aplicarTema(temaSelecionado)
+            salvarTema(temaSelecionado)
+
+        })
+
+        /* ================================ 
+                     APLICAR TEMA
+           ================================ */
+        function aplicarTema(tema) {
+            body.classList.remove("claro", "escuro")
+            body.classList.add(tema)
+        }
+
+        /* ================================ 
+                     SALVAR TEMA
+           ================================ */
+        function salvarTema(tema) {
+            localStorage.setItem('tema', tema)
+        }
+
+    </script>
+    
+
+</body>
+</html>
